@@ -1,4 +1,4 @@
 #!/bin/bash
 #
 #
-docker build -t yti-activemq:dev .
+docker build -t yti-activemq:latest .
