@@ -26,7 +26,8 @@ if [ "$DISABLE_SECURITY" ]; then
 fi
 
 # Log to tty to enable docker logs container-name
-#sed -i "s/logger.handlers=.*/logger.handlers=CONSOLE/g" ${CONFIG_PATH}/logging.properties
+sed -i "s/logger.handlers=.*/logger.handlers=CONSOLE/g" ${CONFIG_PATH}/logging.properties
+sed -i "s/formatter.PATTERN.pattern=.*/formatter.PATTERN.pattern=%d{dd.MM.yyyy HH:mm:ss.SSS} %-5p (%13F:%L) %3x - %m%n/g" ${CONFIG_PATH}/logging.properties
 
 # Set the broker name to the host name to ease experience in external monitors and in the console
 if (echo "${ACTIVEMQ_ARTEMIS_VERSION}" | grep -Eq "(1\\.[^0-2]\\.[0-9]+|2\\.[0-9]\\.[0-9]+)" ) ; then 
